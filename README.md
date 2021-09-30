@@ -60,5 +60,6 @@ python3 main.py --dump-period 3
                 ]
             }
         ]
+	]
 }
 ```
