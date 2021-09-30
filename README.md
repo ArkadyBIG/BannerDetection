@@ -1,6 +1,7 @@
 # Get Started
 ``` bash 
 docker build -t banner_detection .
+dcoker run -it banner_detection
 ```
 
 ## In Docker Container
