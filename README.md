@@ -47,7 +47,7 @@ python3 main.py --dump-period 3
 		[
             "2021-09-30 13:56:33.149157",
             {
-                "detections": [ // List of detections in relative cordinates (x1, y1, x2, y2)
+                "detections": [ # List of detections in relative cordinates (x1, y1, x2, y2)
                     [
                         0.853515625,
                         0.1145833358168602,
