@@ -18,12 +18,12 @@ https://www.twitch.tv/fif_tesei
 ```
 python3 main.py --dump-period 3
 ```
-```Period of saving results in minutes: 'dump-every' (default 1 minute). Set to at least 30 minutes after testing for more accurate results.``` 
+```Saving data period in minutes: 'dump-every' (default 1 minute). Recommended to set to at least 30 minutes after testing for more accurate results.``` 
 
 
 # Results
 
-### All details are saved in ```./result``` folder as:
+### All details are saved in ```./result``` folder in format:
 ### ```./result/{twitch_nickname}/{day}/{time}.json```
 
 ### Each json file is represented as:
