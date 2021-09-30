@@ -1,5 +1,6 @@
 import streamlink
 import cv2
+import imutils
 
 RESOLUTIONS = ('360p', '480p', '720p', '720p60', '1080p60', 'best')
 
@@ -20,7 +21,13 @@ class StreamCapture:
 		self._width = width
 		self._url = url
 		self._capture = _create_capture(url)
-	
-	def is_online(self):
-		return self._capture is not None
 
+	def read(self):
+		if self._capture is None:
+			return None
+		ret, frame = self._capture.read()
+		if not ret:
+			return None
+		
+		frame = imutils.resize(frame, width=self._width)
+		return frame

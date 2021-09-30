@@ -1,6 +1,9 @@
 import cv2
 import imutils
+import numpy as np
+
 from utils import nms
+
 
 def _load_banner(path, width):
 	banner = cv2.imread(path)
@@ -17,11 +20,13 @@ def _create_hough_detector(template, thresh=60):
 	return ght
 
 class BannerDetector:
-	def __init__(self, baner_path='./banner.jpg', banner_width=70):
+	def __init__(self, banner_path='./banner.jpg', banner_width=70):
 		self.banner_template = _load_banner(banner_path, banner_width)
 		self._detector = _create_hough_detector(self.banner_template)
 
-	def detect(image, scale_from=0.8, scale_to=1.2, intervals=20)
+	def detect(self, image, scale_from=0.8, scale_to=1.2, intervals=20):
+		if len(image.shape) > 2:
+			image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		boxes = []
 		scores = []
 		scales = []
@@ -31,7 +36,7 @@ class BannerDetector:
 
 		_range = np.linspace(scale_from, scale_to, intervals)
 		for scale in (_range):
-			resized = imutils.resize(frame, width=int(frame.shape[1] * scale))
+			resized = imutils.resize(image, width=int(image.shape[1] * scale))
 			# _start = time()
 			positions = self._detector.detect(resized)
 			# print('Houg:', time() - _start)
@@ -54,6 +59,9 @@ class BannerDetector:
 				boxes.extend(curboxes)
 
 		boxes, scores = nms(boxes, scores)
+		boxes = [b.tolist() for b in boxes]
+		scores = [b.tolist() for b in scores]
+
 		return boxes, scores, scales
 	
 
