@@ -34,5 +34,5 @@ RUN make
 RUN make install
 
 RUN mkdir /workspace
-
+COPY . /workspace
 WORKDIR /workspace

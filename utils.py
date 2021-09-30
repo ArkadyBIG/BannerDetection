@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 
 
 def nms(bounding_boxes, confidence_score, threshold=0.4):
