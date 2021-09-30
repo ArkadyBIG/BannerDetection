@@ -12,7 +12,7 @@ RUN git clone https://github.com/opencv/opencv
 
 
 RUN mkdir release
-WORKDIR /opencv/release
+WORKDIR /opencv/release 
 
 RUN ls ..
 RUN apt-get install -y  python3-dev 
@@ -34,5 +34,5 @@ RUN make
 RUN make install
 
 RUN mkdir /workspace
-
+COPY . /workspace
 WORKDIR /workspace
